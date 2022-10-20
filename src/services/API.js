@@ -28,8 +28,13 @@ function deleteHabits(HABIT_ID) {
     return promise;
 }
 
-function getHabits() {
-    const promise = axios.get(`${BASE_URL}/habits/today`);
+function getHabits(token) {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    const promise = axios.get(`${BASE_URL}/habits/today`, config);
     return promise;
 }
 
