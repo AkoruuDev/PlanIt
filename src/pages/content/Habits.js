@@ -7,17 +7,12 @@ import { useContext, useEffect, useState } from "react";
 import { getHabits } from "../../services/API";
 import { AuthContext } from "../../provider/auth";
 
-const habts = [{
-	name: "Nome do hábito",
-	days: [1, 3, 5]
-}];
+const habts = [];
 
 export default function Habits() {
     const [habs, setHabs] = useState([]);
     const [add, setAdd] = useState(false);
     const { user } = useContext(AuthContext);
-
-    console.log(user);
 
     useEffect(() => {
         getHabits(user.token)
@@ -27,8 +22,6 @@ export default function Habits() {
             .catch()
     }, []);
     
-    console.log(habts.length);
-    console.log(habts)
     return (
         <Container>
             <Header />
